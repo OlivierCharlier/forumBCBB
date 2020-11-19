@@ -27,7 +27,7 @@
     <main class="container-fluid row align-items-start">
 
       <!-- CATEGORIES -->
-      <?php include("include/categories.php"); ?>
+      <?php include("include/boards.php"); ?>
 
       <!-- aside -->
       <?php include("include/aside.php"); ?>
