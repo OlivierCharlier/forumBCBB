@@ -19,12 +19,18 @@ body {
     border-radius: 15px;
     margin-left: 50px;
     margin-top: -50px;
+    margin-right: 50px;
 }
 
 a {
 
     text-decoration: none;
 }
+a:link { 
+    text-decoration:none; 
+} 
+
+
 .image{
 
     background: linear-gradient(90deg, rgba(15,92,23,0.40798326166404064) 0%, rgba(73,164,90,0.3351541300113795) 35%, rgba(0,255,10,0.18109250536151966) 100%),
@@ -35,12 +41,68 @@ a {
     height: 50vh;
     display: flex;
 
-   
 }
 
 .Title {
 
-    margin: auto;
+    margin:auto;
     color:white;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Caviar', serif;
 }
+
+.breadcrumb {
+
+    width: 15rem;
+    background-color: white;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+
+.breadcrumb a {
+
+    margin-left:10px;
+    margin-right: 10px;
+    padding: 0;
+    
+}
+.login {
+
+    color:white;
+    font-size: 1.3rem;
+    margin-right: 15px;
+    font-weight: bold;
+
+}
+
+.Title-Board{
+
+    font-family: 'subway', serif;
+    color:#939592;
+    font-size: 2rem;
+}
+
+.forum-title {
+
+    font-family: 'subway', serif;
+    color:#939592;
+    font-size: 1.5rem;
+
+
+}
+
+@font-face {
+
+    font-family:'Caviar';
+    src:url('../Fonts/caviarDreams.ttf')
+}
+@font-face {
+
+    font-family:'subway';
+    src:url('../Fonts/Subway-Black.ttf')
+}
+
