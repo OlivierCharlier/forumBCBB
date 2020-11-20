@@ -14,25 +14,15 @@
 
   <!-- HEADER  -->
   <?php include("include/header.php"); ?>
-
+ 
   <!-- START OF PAGE CONTENT  -->
   <main class="background">
 
-  
-    <!-- <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Board Index</a>
-      </li>
-    </ul> -->
-
+    <!-- NAV BAR  -->
+    <?php include("include/breadcrumb.php"); ?>
     <!-- S'adapte sur tout l'écran-->
     <div class="container-fluid row align-items-start">
-
-      <!-- NAV BAR  -->
-      <?php include("include/breadcrumb.php"); ?>
+   
 
       <!-- CATEGORIES -->
       <?php include("include/categories.php"); ?>
