@@ -1,40 +1,4 @@
 
-    <?php 
-/*Appel le fichier database*/ 
-include 'bdd.php';
-/*Permet de récupérer les infos utilisateurs*/ 
-if(isset($_POST['validate'])){
-    /*Si ce n'est pas vide === !empty*/ 
-    if(!empty($_POST['username']) AND !empty($_POST['pwd'])){
-        /*----------Récupère le username-----------*/
-        $username = htmlspecialchars($_POST['username']);
-        /*htmlspecialchars = permet de sécuriser*/ 
-        $pwd = sha1($_POST['pwd']);
-        /*sha1 Permet de sécruriser le mot de passe, il le change en données*/
-        $check_presence_user = $bdd->prepare('SELECT * FROM users WHERE username = ? AND pwd = ?');
-        /*prepare, prépare une varible, * etoile veut dire tous les champs*/ 
-        /*Permet de vérifier si l'utilisateur existe dans la base de donnée*/ 
-        /* l'étoile * permet de trouver tout ce qui concorde avec la demande*/ 
-        $check_presence_user->execute(array($username, $pwd));
-        /*permet de vérifier si l'utilisateur existe*/ 
-
-        /*-----------------PERMET A L'UTILISATEUR DE SE CONNECTER-------------------*/
-        if($check_presence_user->rowCount() > 0){
-            $info_user = $check_presence_user->fetch();
-            /*Va permettre à l'utilidateur de rester connécté et de récupérer ses infos*/
-            $_SESSION['pwd'] = $info_user['pwd'];
-            $_SESSION['userId'] = $info_user['userId'];
-            $_SESSION['username'] = $info_user['username'];
-            /*Envoie l'utilsateur vers la page index si ses données d'entrées sont corrects*/
-        }else{
-            echo "Incorrect username or password";
-        }
-    }else{
-        echo "Please complete all fields";
-    }
-}
-?> 
-    
     <div class="col-xs-12 col-sn-12 col-md-3 col-lg-3">
 
                     <!-----------SEARCH-------------->
@@ -50,23 +14,23 @@ if(isset($_POST['validate'])){
                     <label class="sr-only" for="inlineFormInputGroup">Username</label>
                     <div class="input-group mb-2">
                       <div class="input-group-prepend">
-                      <div class="input-group-text">
+                      <div class="input-group-text">@
                       </div>
                       </div>
-                      <input type="text" name="username" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
                     </div>
                 </form> 
                     <!-----------PASSWORD-------------->
                 <form>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" id="exampleInputPassword1">
                   </div>
                   <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Remember me</label>
                   </div>
-                  <button type="submit" name="validate" class="btn btn-primary">Login</button>
+                  <button type="submit" class="btn btn-primary">Login</button>
                 </form>
                 </br>
          
