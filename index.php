@@ -16,10 +16,9 @@
   <?php include("include/header.php"); ?>
 
   <!-- START OF PAGE CONTENT  -->
-  <div>
+  <main class="background">
 
-    <!-- NAV BAR  -->
-    <?php include("include/breadcrumb.php"); ?>
+  
     <!-- <ul class="nav">
       <li class="nav-item">
         <a class="nav-link active" href="#">Home</a>
@@ -30,16 +29,19 @@
     </ul> -->
 
     <!-- S'adapte sur tout l'écran-->
-    <main class="container-fluid row align-items-start">
+    <div class="container-fluid row align-items-start">
+
+      <!-- NAV BAR  -->
+      <?php include("include/breadcrumb.php"); ?>
 
       <!-- CATEGORIES -->
       <?php include("include/categories.php"); ?>
 
       <!-- aside -->
       <?php include("include/aside.php"); ?>
-    </main>
+    </div>
 
-  </div>
+  </main>
   <!-- END OF PAGE CONTENT -->
 
 
