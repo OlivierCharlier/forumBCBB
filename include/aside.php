@@ -1,14 +1,13 @@
 
     <?php 
 /*Appel le fichier database*/ 
-include 'database.php';
+include 'bdd.php';
 /*Permet de récupérer les infos utilisateurs*/ 
 if(isset($_POST['validate'])){
     /*Si ce n'est pas vide === !empty*/ 
     if(!empty($_POST['username']) AND !empty($_POST['pwd'])){
         /*----------Récupère le username-----------*/
         $username = htmlspecialchars($_POST['username']);
-        $userEmail = htmlspecialchars($_POST['userEmail']);
         /*htmlspecialchars = permet de sécuriser*/ 
         $pwd = sha1($_POST['pwd']);
         /*sha1 Permet de sécruriser le mot de passe, il le change en données*/
@@ -26,7 +25,6 @@ if(isset($_POST['validate'])){
             $_SESSION['pwd'] = $info_user['pwd'];
             $_SESSION['userId'] = $info_user['userId'];
             $_SESSION['username'] = $info_user['username'];
-            header('Location: index.php');
             /*Envoie l'utilsateur vers la page index si ses données d'entrées sont corrects*/
         }else{
             echo "Incorrect username or password";
@@ -62,7 +60,7 @@ if(isset($_POST['validate'])){
                 <form>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1">
                   </div>
                   <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
