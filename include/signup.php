@@ -12,21 +12,15 @@ if(isset($_POST['validate'])){
     $date = date('d/m/Y à H:i:s');
 
 
-    /*Permet de vérifier si l'utilsateur n'a pas laisser de champs vide*/
-    if (!empty($_POST['username']) AND !empty($_POST['pwd']) AND !empty($_POST['pwd-confirm']) AND !empty($_POST['userEmail']) AND $_POST['pwd']){  
-      
-    } elseif (empty($_POST["userName"])){
+    if (empty($_POST["username"])){
+        $errorMessage ="user vide";
+    } elseif (empty($_POST["userEmail"])){
         $errorMessage ="Email vide";
-    } elseif (!empty($_POST["userEmail"])){
-        $errorMessage ="Email vide";
-    } elseif (!empty($_POST["pwd"]) OR !empty($POST["pwd-confirm"])){
+    } elseif (empty($_POST["pwd"])){
         $errorMessage ="Mot de passe vide";
-    } elseif (lgt($_POST["pwd"]) < 8 ) {
-        $errorMessage ="Mot de passe pas assez long";
     } elseif ($_POST['pwd'] != $_POST['pwd-confirm']) {
         $errorMessage ="Mot de passe pas identique";
-    }
-        
+    } else {
             //insérer un membre
             $insert_user = $bdd->prepare('INSERT INTO users(username, userEmail, pwd)VALUES(?, ?, ?)');
             /*USERS = nom da la table sur phpMyAdmin*/
@@ -41,12 +35,12 @@ if(isset($_POST['validate'])){
             $_SESSION['userId'] = $info_user['userId'];
             $_SESSION['userEmail'] = $info_user['userEmail'];
             $_SESSION['username'] = $info_user['username'];
-
             $succesMessage = "You are registered. Welcome to the forum, don't forget to introduce yourself!"; 
         //Fin de l'espace utilisateur    
         //fin du premier if
     
-} 
+    } 
+}
 ?>
 
 
@@ -83,15 +77,15 @@ if(isset($_POST['validate'])){
                                 <!--PASSWORD*-->
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="password" name="pwd" id="password" class="form-control">
+                                    <input type="password" name="pwd" id="pwd" class="form-control">
                                 </div>
                                 <!--PASSWORD CONFIRM*-->
                                 <div class="form-group">
                                     <label for="password" class="text-info">Confirm Password:</label><br>
-                                    <input type="password" name="pwd-confirm" id="password" class="form-control">
+                                    <input type="password" name="pwd-confirm" id="pwd-confirm" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
+                                    <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
                                     <br>
                                     <!--BUTTON CONFIRM*-->
                                     <input type="submit" name="validate" class="btn btn-info btn-md" value="submit">
