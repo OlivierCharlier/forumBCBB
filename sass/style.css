@@ -1,25 +1,4 @@
 * {
-  margin: 0;
-  padding: 0; }
-
-a {
-  text-decoration: none; }
-
-.image {
-  background: linear-gradient(90deg, rgba(15, 92, 23, 0.4079832617) 0%, rgba(73, 164, 90, 0.33515413) 35%, rgba(0, 255, 10, 0.1810925054) 100%), url("../pictures/badminton1.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 50vh;
-  display: flex; }
-
-.Title {
-  margin: auto;
-  color: white;
-  font-family: 'Playfair Display', serif; }
-
-/*# sourceMappingURL=style.css.map */
-* {
 
   margin: 0;
   padding: 0;
@@ -49,6 +28,9 @@ body {
   margin-left: 50px;
   margin-top: -50px;
   margin-right: 50px;
+  z-index:1;
+  position: relative;
+ 
 }
 
 a {
@@ -102,7 +84,7 @@ a {
 
   display: flex;
 
-  margin-top: 15px;
+
   
   
   
@@ -114,13 +96,99 @@ a {
   margin-right: 15px;
   margin-left: 15px;
   margin-top: 15px;
+  color: #50b68a;
 
 }
 
+
+.Breadcrumb a :link {
+
+text-decoration: none;
+
+
+}
 .Breadcrumb span {
 
   padding : 0;
   margin-right: 15px;
   margin-left: 15px;
   margin-top: 15px;
+}
+
+.gradient  {
+
+
+  background: linear-gradient(0deg, rgba(110,241,139,1) 0%, rgba(50,200,117,1) 0%, rgba(12,116,49,1) 58%);
+  height: 30vh;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -50px;
+  z-index:-1;
+  
+  
+}
+
+.icon a{
+
+  font-size: 2.5rem;
+  text-decoration: none;
+  color:white;
+  margin-right: 20px;
+}
+
+.icon:link {
+
+  text-decoration:none;
+}
+
+.icon a:hover {
+
+  color:#0fb54b;
+}
+
+.grey {
+
+  background-color: #403e3e;
+  margin-top: -15px;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+
+  
+
+}
+.grey2 {
+
+  background-color:#222222;
+}
+
+.Little-Icons {
+
+  width: 35%;
+ text-align: right;
+ width: 100%;
+ margin-right: 15px;
+ 
+}
+
+.Little-Icons a {
+
+  color:#7bd2a7;
+}
+
+.Little-Icons a:hover {
+  color: #0fb54b;
+
+}
+.Little-Icons:link {
+  text-decoration: none;
+
+}
+
+.grey2 p {
+
+  color:silver;
+  margin-left: 15px;
 }
