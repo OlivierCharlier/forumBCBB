@@ -1,3 +1,6 @@
+
+<div class=Breadcrumb> 
+
 <?php
 $def = "index";
 $dPath = $_SERVER['PHP_SELF'];
@@ -21,3 +24,6 @@ for($i=1; $i<count($dChunks); $i++ ){
 	echo(str_replace("_" , " " , $prChunks[0]));
 } 
 ?>
+
+
+</div>
