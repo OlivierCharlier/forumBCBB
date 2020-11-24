@@ -1,25 +1,45 @@
 <?php
 include 'bdd.php';
 if(isset($_POST['validate'])){
-
+    //htmlspecialchars permet de sécuriser le forum des scripts
     $username = htmlspecialchars($_POST['username']);
     $userEmail = htmlspecialchars($_POST['userEmail']);
-    $pwd = sha1($_POST['pwd']);
-    $pwd = sha1($_POST['pwd-confirm']);
+    //password_hash permet de sécuriser les mots de passe
+    $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
+    $options = [
+        'cost' => 11
+    ];
+
+    $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT, $options);
     //date
     date_default_timezone_set('Europe/Paris');
     $date = date('d/m/Y à H:i:s');
 
+    //Email unique === récupère les entrées de la table users
+    $queryemail = $bdd->prepare("SELECT userEmail FROM users WHERE userEmail = ?");
+    $queryemail->execute([$userEmail]); 
+    //Username unique === récupère les entrées de la table users
+    $queryusername = $bdd->prepare("SELECT username FROM users WHERE username = ?");
+    $queryusername->execute([$username]); 
 
+    //empty =vide
     if (empty($_POST["username"])){
-        $errorMessage ="user vide";
+        $errorMessage ="Empty Username";
     } elseif (empty($_POST["userEmail"])){
-        $errorMessage ="Email vide";
+        $errorMessage ="Empty mail";
     } elseif (empty($_POST["pwd"])){
-        $errorMessage ="Mot de passe vide";
+        $errorMessage ="Empty Password";
     } elseif ($_POST['pwd'] != $_POST['pwd-confirm']) {
-        $errorMessage ="Mot de passe pas identique";
+        $errorMessage ="Password not identical";
+    }  elseif(strlen($username) >= 16){
+        $errorMessage ="Username too long, (maximum 16 characters).";
+    } elseif($queryemail->fetch()) {
+        //recupère la première ligne du tableau $queryuserEmail
+        $errorMessage ="Email already existing on our forum !";
+    } elseif($queryusername->fetch()) {
+        //recupère la première ligne du tableau $queryusername
+        $errorMessage ="Username already taken !";
     } else {
             //insérer un membre
             $insert_user = $bdd->prepare('INSERT INTO users(username, userEmail, pwd)VALUES(?, ?, ?)');
