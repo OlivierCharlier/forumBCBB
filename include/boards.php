@@ -2,35 +2,28 @@
 
 	<?php
 		$boardQuery = "SELECT * FROM boards";
-		$boardResult = mysqli_query($bdd, $boardQuery);
-		while ($boardRow = mysqli_fetch_assoc($boardResult)) {
+		$boardResult = $bdd->query($boardQuery);
+		while ($boardRow = $boardResult->fetch()) {
 	?>
 		<h2><?= $boardRow["boardsName"]; ?></h2>
 		<div class="row">
 		<?php
-			$forumQuery = "SELECT * FROM forums WHERE forumBoardId = " . $boardRow["boardsId"];
-			$forumResult = mysqli_query($bdd, $forumQuery);
-			while ($forumRow = mysqli_fetch_assoc($forumResult)) {
+			$forumQuery = "SELECT * FROM forums WHERE forumBoardId = ?";
+			$forumResult = $bdd->prepare($forumQuery);
+			$forumResult->execute(array($boardRow["boardsId"]));
+			while ($forumRow = $forumResult->fetch()) {
 
 				/* SELECTING LAST TOPIC OF THE FORUM */
 				$lastTopicQuery = "SELECT topicCreationDate FROM topics WHERE topicForumId = ? ORDER BY topicId DESC LIMIT 1";
-				$lastTopicResult = mysqli_prepare($bdd, $lastTopicQuery);
-				mysqli_stmt_bind_param($lastTopicResult, "s", $forumRow["forumId"]);
-				mysqli_stmt_execute($lastTopicResult);
-				mysqli_stmt_bind_result($lastTopicResult, $lastTopic);
-				mysqli_stmt_fetch($lastTopicResult);
-				mysqli_stmt_close($lastTopicResult);
-				/*$lastTopicResult = mysqli_query($bdd, $lastTopicQuery);*/
-				/* $lastTopic = mysqli_fetch_assoc($lastTopicResult); */
+				$lastTopicResult = $bdd->prepare($lastTopicQuery);
+				$lastTopicResult->execute(array($forumRow["forumId"]));
+				$lastTopic = $lastTopicResult->fetch();
 
 				/* SELECTING THE TOTAL OF POSTS OF THE FORUM */
 				$totalTopicQuery = "SELECT COUNT(*) AS 'total' FROM topics WHERE topicForumId = ?";
-				$totalTopicResult = mysqli_prepare($bdd, $totalTopicQuery);
-				mysqli_stmt_bind_param($totalTopicResult, "s", $forumRow["forumId"]);
-				mysqli_stmt_execute($totalTopicResult);
-				mysqli_stmt_bind_result($totalTopicResult, $totalTopic);
-				mysqli_stmt_fetch($totalTopicResult);
-				mysqli_stmt_close($totalTopicResult);
+				$totalTopicResult = $bdd->prepare($totalTopicQuery);
+				$totalTopicResult->execute(array($forumRow["forumId"]));
+				$totalTopic = $totalTopicResult->fetch();
 		?>
 		<section class="col-12 col-md-4" style="max-width: 540px;">
 			<div class="card mb-3">
@@ -46,8 +39,7 @@
 					</div>
 					<div class="row">
 						<div class="mr-2">
-							<!-- TODO -->
-							<p><?= $totalTopic; ?></p>
+							<p><?= $totalTopic["total"]; ?></p>
 							<p class="text-muted">Topics</p>
 						</div>
 						<div class="mr-2">
@@ -56,8 +48,7 @@
 							<p class="text-muted">Posts</p>
 						</div>
 						<div class="mr-2">
-							<!-- TODO -->
-							<p><?= $lastTopic; ?></p>
+							<p><?= $lastTopic["topicCreationDate"]; ?></p>
 							<p class="text-muted">Last post</p>
 						</div>
 					</div>
@@ -68,10 +59,8 @@
 			}
 		?>
 		</div>
-	<?php        
+	<?php
 		}
 	?>
 
 </div>
-
-
