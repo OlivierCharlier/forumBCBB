@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="sass/style.css">
+  <link rel="stylesheet" href="sass/style_user.css">
   <title> Badminton  Club Bain de Bretagne.  </title>
 
   <?php
