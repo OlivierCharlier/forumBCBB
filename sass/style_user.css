@@ -1,0 +1,55 @@
+
+.userContainer {
+    padding: 8Opx;
+    margin: 25px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: grey;
+    border-radius: 5px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 0px 15px;
+    grid-template-areas:
+      "picGravatar picGravatar name username modifName"
+      "picGravatar picGravatar mail userEmail modifEmail"
+      "picGravatar picGravatar signature signatureTxt modfiSignature"
+      "ModifGravatar ModifGravatar ModifGravatar ModifGravatar ModifGravatar";
+  }
+  
+  .name { grid-area: name; 
+        font-weight: bold;}
+  
+  .mail { grid-area: mail;  
+    font-weight: bold;}
+  
+  .signature { grid-area: signature;  
+    font-weight: bold;}
+  
+  .username { grid-area: username; }
+  
+  .userEmail { grid-area: userEmail; }
+  
+  .signatureTxt { grid-area: signatureTxt; }
+  
+  .picGravatar { grid-area: picGravatar; }
+  
+  .modifName { grid-area: modifName; }
+  
+  .modifEmail { grid-area: modifEmail; }
+  
+  .modfiSignature { grid-area: modfiSignature; }
+  
+  .ModifGravatar { grid-area: ModifGravatar; 
+    margin-top: 25px;
+    text-align: center;
+    }
+
+  .avatar {
+      width: 120px;
+      height: 120px;
+  }
+  
