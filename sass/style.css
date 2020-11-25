@@ -194,6 +194,15 @@ text-decoration: none;
   margin-left: 15px;
 }
 
+.avatar-border {
+  
+  border: 1px solid #bbb;
+
+
+}
+
+
+
 @media screen and (max-width: 640px) {
 
 
