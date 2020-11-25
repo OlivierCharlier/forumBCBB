@@ -1,17 +1,13 @@
+<div class="container-fluid col-12 col-md-9 p-5">
+
 <?php
 include 'bdd.php';
-if(isset($_POST['validate'])){
+if(isset($_POST['validatetwo'])){
     //htmlspecialchars permet de sécuriser le forum des scripts
     $username = htmlspecialchars($_POST['username']);
     $userEmail = htmlspecialchars($_POST['userEmail']);
     //password_hash permet de sécuriser les mots de passe
-    $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
-
-    $options = [
-        'cost' => 11
-    ];
-
-    $pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT, $options);
+    $pwd = hashPwd($_POST['pwd']);
     //date
     date_default_timezone_set('Europe/Paris');
     $date = date('d/m/Y à H:i:s');
@@ -51,6 +47,7 @@ if(isset($_POST['validate'])){
             $check_session->execute(array($username, $userEmail, $pwd));
             $info_user = $check_session->fetch();
             /*Va permettre à l'utilisateur de rester connécté et de récupérer ses infos*/
+            session_start();
             $_SESSION['pwd'] = $info_user['pwd'];
             $_SESSION['userId'] = $info_user['userId'];
             $_SESSION['userEmail'] = $info_user['userEmail'];
@@ -63,31 +60,20 @@ if(isset($_POST['validate'])){
 }
 ?>
 
-
-
-<!DOCTYPE html>
- <html>
- <head>
-  <title>Become a member</title>
-  <meta charser="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- </head>
- <body>
-    <form action="" method="POST">
         <div id="login">
             <h3 class="text-center pt-5">Form</h3>
             <div class="container">
                 <div id="login-row" class="row justify-content-center align-items-center">
                     <div id="login-column" class="col-md-6">
                         <div id="login-box" class="col-md-12">
-                            <form id="login-form" class="form" action="" method="post">
+                            <form id="login-form" class="form" action="signup.php" method="post">
                                 <h3 class="text-center text-info">Become a member</h3>
                                 <?php if (isset($errorMessage)) { ?> <p style="color: red;"><?= $errorMessage ?></p> <?php } ?>
                                 <?php if (isset($succesMessage)) { ?> <p style="color: green;"><?= $succesMessage ?></p> <?php } ?>
                                 <!--USERNAME*-->
                                 <div class="form-group">
                                     <label for="username" class="text-info">Username:</label><br>
-                                    <input type="text" name="username" id="username" class="form-control">
+                                    <input type="text" name="username" id="username" class="form-control" maxlength="16">
                                 </div>
                                 <!--EMAIL*-->
                                 <div class="form-group">
@@ -97,18 +83,18 @@ if(isset($_POST['validate'])){
                                 <!--PASSWORD*-->
                                 <div class="form-group">
                                     <label for="password" class="text-info">Password:</label><br>
-                                    <input type="password" name="pwd" id="pwd" class="form-control">
+                                    <input type="password" name="pwd" id="pwd" class="form-control" maxlength="40">
                                 </div>
                                 <!--PASSWORD CONFIRM*-->
                                 <div class="form-group">
                                     <label for="password" class="text-info">Confirm Password:</label><br>
-                                    <input type="password" name="pwd-confirm" id="pwd-confirm" class="form-control">
+                                    <input type="password" name="pwd-confirm" id="pwd-confirm" class="form-control" maxlength="40">
                                 </div>
                                 <div class="form-group">
                                     <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
                                     <br>
                                     <!--BUTTON CONFIRM*-->
-                                    <input type="submit" name="validate" class="btn btn-info btn-md" value="submit">
+                                    <input type="submit" name="validatetwo" class="btn btn-info btn-md" value="submit">
                                 </div>
                             </form>
                         </div>
@@ -116,13 +102,4 @@ if(isset($_POST['validate'])){
                 </div>
             </div>
         </div>
-    </form>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    </body>            
-
-</html>
+</div>
