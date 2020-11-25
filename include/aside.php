@@ -22,10 +22,10 @@ if (isset($_POST['validateone'])){
             $info_user = $check_presence_user->fetch();
             /*Va permettre à l'utilidateur de rester connécté et de récupérer ses infos*/
             session_start();
-            $_SESSION['pwd'] = $info_user['pwd'];
-            $_SESSION['userId'] = $info_user['userId'];
-            $_SESSION['username'] = $info_user['username'];
-            $_SESSION['userEmail'] = $info_user['userEmail'];
+            $_SESSION['pass'] = $info_user['pwd'];
+            $_SESSION['userIden'] = $info_user['userId'];
+            $_SESSION['userName'] = $info_user['username'];
+            $_SESSION['email'] = $info_user['userEmail'];
             $succesMessage =' Bienvenue' . $_SESSION['username'] . ' !';
             echo("testone");
             /*Envoie l'utilsateur vers la page index si ses données d'entrées sont corrects*/
@@ -49,30 +49,31 @@ if (isset($_POST['validateone'])){
                 <?php if (isset($errorMessage)) { ?> <p style="color: red;"><?= $errorMessage ?></p> <?php } ?>
                 <?php if (isset($succesMessage)) { ?> <p style="color: green;"><?= $succesMessage ?></p> <?php } ?>
                     <!-----------USERNAME-------------->
-                <form action="aside.php" method="POST">
+                <form action="profile.php" method="POST" name="aside.php">
                   </br>
                   <p> Login - Register</p>
                   <div class="w-100 col-auto">
                     <label class="sr-only" for="inlineFormInputGroup">Username</label>
                     <div class="input-group mb-2">
-                      <input type="text" name="username" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="16">
+                      <input type="text" name="userName" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="16">
                     </div>
                     <!-----------PASSWORD-------------->
-                  <div class="w-100 form-group">
+          
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="pwd" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+              
+                    <div class="form-group form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                    </div>
+                    <button type="submit" name="validateone" class="btn btn-success">Login</button>
                   </div>
-                  <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                  </div>
-                  <button type="submit" name="validateone" class="btn btn-success">Login</button>
                 </form>
                 </br>
             <!-----------NEW MEMBER-------------->
             <h3 class="Become">Become a member</h3>
             <button type="submit" name="becomeaMembre" class="w-100 btn btn-success">
-            <?php echo "<a href='include/signup.php' target='_blank'> Sign up ! </a>" ?>
+            <?php echo "<a href='include/register.php' target='_blank'> Sign up ! </a>" ?>
             </button>
             </br>
             </br>

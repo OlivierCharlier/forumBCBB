@@ -66,7 +66,7 @@ if(isset($_POST['validatetwo'])){
                 <div id="login-row" class="row justify-content-center align-items-center">
                     <div id="login-column" class="col-md-6">
                         <div id="login-box" class="col-md-12">
-                            <form id="login-form" class="form" action="signup.php" method="post">
+                            <form id="login-form" class="form" action="s.php" name="signup.php" method="post">
                                 <h3 class="text-center text-info">Become a member</h3>
                                 <?php if (isset($errorMessage)) { ?> <p style="color: red;"><?= $errorMessage ?></p> <?php } ?>
                                 <?php if (isset($succesMessage)) { ?> <p style="color: green;"><?= $succesMessage ?></p> <?php } ?>
