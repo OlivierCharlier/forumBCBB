@@ -66,13 +66,13 @@ if (isset($_POST['validateone'])){
             <!-----------NEW MEMBER-------------->
             <h3 class="Become">Become a member</h3>
             <button type="submit" name="becomeaMembre" class="w-100 btn btn-success">
-            <?php echo "<a href='include/register.php' target='_blank'> Sign up ! </a>" ?>
+            <?php echo "<a href='register.php' target='_blank'> Sign up ! </a>" ?>
             </button>
             </br>
             </br>
             <h3 class="Become">My profile</h3>
             <button type="submit" name="myProfil" class="w-100 btn btn-success">
-            <?php echo "<a href='Badminton-Club-Bain-de-Bretagne/profile.php' target='_blank'> Complete your profile ! </a>" ?>
+            <?php echo "<a href='profile.php' target='_blank'> Complete your profile ! </a>" ?>
             </button>
 
                   <!-----------LAST POSTS -------------->
