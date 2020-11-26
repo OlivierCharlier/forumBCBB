@@ -1,18 +1,27 @@
 <?php
-/**
- * Fonction d'affichage d'un gravatar en fonction
- * d'une adresse e-mail
- *
- * @param string $email E-mail rattaché au gravatar
- * @param int $size Dimension du gravatar
- * @return string $out Code HTML du gravatar
- */
+//if a session exist, take the user information from the database.
+ if (! empty($_SESSION['userId'])) 
+ {
+  $userQuery="SELECT * FROM users WHERE userId =?";
+  $userResult=$bdd->prepare($userQuery);
+  $userResult->execute([$_SESSION['userId']]);
+  $user=$userResult->fetch(PDO::FETCH_ASSOC);
 
- // info : http://fr.gravatar.com/site/implement/images/php/
-$email = $_SESSION['userEmail'];
+// use this informations to know the email address
+$email = $user['userEmail']; 
+//img if the address is unknow by Gravatar
 $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
-$size = 120;
+$size = 120; //img size
+//creat the URL of the img from Gravatar linked with the email address
 $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-?>
+ }
+ else{
 
+    $email = "mail@mail.mail"; // a non-existent address to have the default avatar
+    $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
+    $size = 120;
+    $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+ }
+?>
+<!-- img with the URL created -->
 <img class="avatar" src="<?php echo $grav_url; ?>" alt="picture" />

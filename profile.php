@@ -1,20 +1,9 @@
-
-<?php
-session_start() ;
-// $_SESSION['name'] = 'Sam';
-// echo '<h1>'.$_SESSION['name'].'</h1><br />'; 
-?>
-
-<?php
-// $response = $dbb->query('SELECT username FROM users WHERE userId="42"');
-// echo "Vous êtes connecté en tant que : {$_SESSION['username']}";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <?php include("include/head.php"); ?>
 <?php include("include/bdd.php"); ?>
+<link rel="stylesheet" href="sass/style_user.css">
 </head>
 <body>
 
