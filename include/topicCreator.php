@@ -6,7 +6,7 @@
 
 	<?php 
 		$forumId = $_GET["id"];
-		$errorMessage="oui";
+		$topicErrorMessage=" ";
 
 		if(isset($_POST["topicCreation"])){
 
@@ -18,11 +18,9 @@
 			</script><?php
 
 			if(empty($title)) {
-				$errorMessage = "Le titre doit être rempli !";
-				echo $errorMessage;
+				$topicErrorMessage = "You must enter a title !";
 			} elseif(empty($message)) {
-				$errorMessage = "Le message doit être rempli !";
-				echo $errorMessage;
+				$topicErrorMessage = "You must write a message !";
 			} else {
 				$newTopicQuery = "INSERT INTO topics (topicTitle, topicForumId, topicAuthorId) VALUES (?, ?, ?)";
 				$newTopicResult = $bdd->prepare($newTopicQuery);
@@ -44,14 +42,15 @@
 		}
 	?>
 
+	<p class="text-danger"><?= $topicErrorMessage?></p>
 	<form method="post" class="d-flex flex-column p-3">
-		<label for="title" class="p-2 mt-4">Nom du topic <span class="text-muted">(max. 255 caractères)</span></label>
+		<label for="title" class="p-2 mt-4">Topic title <span class="text-muted">(max. 255 characters)</span></label>
 		<input type="text" id="topicTitle" name="title">
 
 		<label for="message" class="p-2 mt-4">Message</label>
 		<textarea maxlength="2000" id="topicMessage" name="message"></textarea>
 	
-		<button type="submit" name="topicCreation" id="topicCreation" class="btn-success rounded-pill w-25 m-3 mt-4 align-self-center">Créer</button>
+		<button type="submit" name="topicCreation" id="topicCreation" class="btn-success rounded-pill w-25 m-3 mt-4 align-self-center">Create new topic</button>
 	</form>
 
 </div>

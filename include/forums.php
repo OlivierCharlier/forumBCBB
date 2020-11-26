@@ -9,11 +9,11 @@
 			New topic
 		</a>
 		<button class="m-2">Tri</button>
-		<form class="row">
+		<form class="row ml-3">
 			<input>
 			<button>Loupe</button>
 		</form>
-		<button>Engrenage</button>
+		<button class="ml-5">Engrenage</button>
 	</div>
 	<div class="rounded border container">
 		<div class="forums__header row bg-success align-items-center">
@@ -41,9 +41,9 @@
 		<div class="row border-top align-items-center p-1">
 			<a class="col-8 m-0" href="posts.php?id=<?= $topicRow["topicId"]; ?>"><?= $topicRow["topicTitle"]; ?></a>
 			<p class="col-1 m-0 text-center"><?= $totalPosts["total"]; ?></p>
-			<p class="col-1 m-0 text-center">OUI</p>
+			<p class="col-1 m-0 text-center">TO DO</p>
 			<p class="col-2 m-0 text-center">
-				Par <a href="profile.php?id=<?= $author["userId"]; ?>">
+				By <a href="profile.php?id=<?= $author["userId"]; ?>">
 					<?= $author["username"]; ?>
 				</a>
 				<br>
@@ -63,3 +63,4 @@
 	</div>
 
 </div>
+
