@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <?php include("include/head.php"); ?>
-<?php include("include/bdd.php"); ?>
 </head>
 <body>
 

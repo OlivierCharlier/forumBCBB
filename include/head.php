@@ -9,3 +9,8 @@
   <link rel="stylesheet" href="sass/aside.css">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
   <title>Badminton Club Bain de Bretagne - BCBB</title>
+
+  <?php
+    include 'password.php';
+    include 'bdd.php';
+  ?>
