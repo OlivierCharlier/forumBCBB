@@ -1,10 +1,12 @@
 <?php
 
     function hashPwd($password){
-        $options = [
-            'cost' => 11
-            ];
-        return password_hash($password, PASSWORD_BCRYPT, $options);
+        //Test with Bcrypt
+        // $options = [
+        //     'cost' => 11
+        //     ];
+        // return password_hash($password, PASSWORD_BCRYPT, $options);
+        return hash('sha512', $password);
     }
 
 ?>
