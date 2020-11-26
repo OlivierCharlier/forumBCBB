@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include("include/head.php"); ?>
-    <?php include("include/bdd.php"); ?>
-    <link rel="stylesheet" href="sass/forum.css">
+<?php include("include/head.php"); ?>
+<?php include("include/bdd.php"); ?>
 </head>
 <body>
 
@@ -19,7 +18,7 @@
     <div class="container-fluid row align-items-start">
 
       <!-- CATEGORIES -->
-      <?php include("include/forums.php"); ?>
+      <?php include("include/topicCreator.php"); ?>
 
       <!-- aside -->
       <?php include("include/aside.php"); ?>
