@@ -6,11 +6,5 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="sass/style.css">
-  <link rel="stylesheet" href="sass/style_user.css">
-  <link rel="stylesheet" href="sass/aside.css">
-  <title> Badminton  Club Bain de Bretagne.  </title>
-
-  <?php
-  include 'password.php';
-  include 'bdd.php';
-  ?>
+  <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+  <title>Badminton Club Bain de Bretagne - BCBB</title>
