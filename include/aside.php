@@ -1,55 +1,49 @@
 <?php 
-/*Permet de récupérer les infos utilisateurs*/ 
-// if(array_key_exists('login', $_POST)) { 
+/*Récupére les infos utilisateurs*/ 
 if (isset($_POST['validateone'])){
    /*----------Récupère le username-----------*/
-  //  $login = array_key_exists('login', $_POST);
-   $username = htmlspecialchars($_POST['username']);
-   /*htmlspecialchars = permet de sécuriser*/ 
-   $pwd = hashPwd($_POST['pwd']);
     /*vide === empty*/ 
-    if (!empty($_POST['username']) AND !empty($_POST['pwd'])){
-        $check_presence_user = $bdd->prepare("SELECT * FROM users WHERE username = ? AND pwd = ?");
+    if (!empty($_POST['userName']) AND !empty($_POST['pass'])){
+        $userName = htmlspecialchars($_POST['userName']);
+        /*htmlspecialchars = permet de sécuriser*/ 
+        $pass = hashPwd($_POST['pass']);
+        // $pass = sha1($_POST['pass']);
+        $check_presence_user = $bdd->prepare('SELECT * FROM users WHERE username = ? AND pwd = ?');
         /* "*" veut dire tous les champs*/ 
         /*Permet de vérifier si l'utilisateur existe dans la base de donnée*/ 
-        /* l'étoile * permet de trouver tout ce qui concorde avec la demande*/ 
-        $check_presence_user->execute(array($username, $pwd));
+        /* "*" permet de trouver tout ce qui concorde avec la demande*/ 
+        $check_presence_user->execute(array($userName, $pass));
         /*permet de vérifier si l'utilisateur existe*/ 
-        $userCount = $check_presence_user->rowCount();
 
         /*-----------------PERMET A L'UTILISATEUR DE SE CONNECTER-------------------*/
-        if ($userCount == 1){
-            $info_user = $check_presence_user->fetch();
+        if ($check_presence_user->rowCount() > 0){
+            $infoUser = $check_presence_user->fetch();
             /*Va permettre à l'utilidateur de rester connécté et de récupérer ses infos*/
-            session_start();
-            $_SESSION['pass'] = $info_user['pwd'];
-            $_SESSION['userIden'] = $info_user['userId'];
-            $_SESSION['userName'] = $info_user['username'];
-            $_SESSION['email'] = $info_user['userEmail'];
-            $succesMessage =' Bienvenue' . $_SESSION['username'] . ' !';
-            echo("testone");
-            /*Envoie l'utilsateur vers la page index si ses données d'entrées sont corrects*/
-            //header('Location: index.php');
+        
+            $_SESSION['pass'] = $infoUser['pwd'];
+            $_SESSION['userIden'] = $infoUser['userId'];
+            $_SESSION['userName'] = $infoUser['username'];
+            $succesMessageaside = "Welcome ".$_SESSION['userName'];
+
           } else{
-          // $_SESSION['flash']['error'] ="Token non valide";
-            $errorMessage ="Incorrect username or password";
+            $errorMessageaside ="Incorrect username or password";
         }
     } else{
-        $errorMessage ="Please complete all fields";
+        $errorMessageaside ="Please complete all fields";
     }
 }
 ?> 
-    <div class="">
+    <aside class="col-md-3 col-12">
                     <!-----------SEARCH-------------->
                 <!-- <form action="" method="POST">
                   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form> -->
                   <!-----------Message-------------->
-                <?php if (isset($errorMessage)) { ?> <p style="color: red;"><?= $errorMessage ?></p> <?php } ?>
-                <?php if (isset($succesMessage)) { ?> <p style="color: green;"><?= $succesMessage ?></p> <?php } ?>
+                <?php if (isset($errorMessageaside)) { ?> <p style="color: red;"><?= $errorMessageaside ?></p> <?php } ?>
+                <?php if (isset($succesMessageaside)) { ?> <p style="color: green;"><?= $succesMessageaside ?></p> <?php } ?>
                     <!-----------USERNAME-------------->
-                <form action="profile.php" method="POST" name="aside.php">
+                <form action="register.php" method="POST" name="aside">
                   </br>
                   <p> Login - Register</p>
                   <div class="w-100 col-auto">
@@ -58,7 +52,6 @@ if (isset($_POST['validateone'])){
                       <input type="text" name="userName" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="16">
                     </div>
                     <!-----------PASSWORD-------------->
-          
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
               
@@ -136,4 +129,4 @@ if (isset($_POST['validateone'])){
                         </div>  
                       </div>
                 </section>
-    </div>
+    </aside>

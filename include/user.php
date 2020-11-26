@@ -1,7 +1,7 @@
 <?php
 $_SESSION['userId']
 ?>
-<div class="userContainer">
+<div class="userContainer col-12 col-md-9"> 
 <div class="grid-container">
   <div class="name">Name :</div>
   <div class="mail">Email :</div>

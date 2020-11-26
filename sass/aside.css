@@ -1,19 +1,18 @@
-    a{
-    color:white;
-    }
 
-    a:hover{
-    color:yellow;
-    }
-
-    .Become{
-      margin-top: 20px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .lastpost{
-      margin-top: 40px;
-    }
-
-   
+    aside a{
+      color:white;
+      }
+  
+      aside a:hover{
+      color:yellow;
+      }
+  
+      aside .Become{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+  
+      aside .lastpost{
+        margin-top: 40px;
+      }
