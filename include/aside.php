@@ -76,7 +76,7 @@ if (isset($_POST['validateone'])){
             </button>
 
                   <!-----------LAST POSTS -------------->
-            <div class="card bg-light mb-3 lastpost" style="max-width: 18rem;">
+            <div class="card bg-light mb-3 lastpost">
                 <div class="card-header">Last pots
                 </div>
                 <div class="card-body">
@@ -92,7 +92,7 @@ if (isset($_POST['validateone'])){
           </div>
 
                 <!-----------LAST ACTIVE USERS -------------->
-                <section class="card bg-light mb-3" style="max-width: 18rem;">
+                <section class="card bg-light mb-3">
                   <div class="card-header">Last Active Users
                   </div>
                   <div class="card-body">
