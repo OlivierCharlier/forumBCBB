@@ -1,6 +1,5 @@
 <div class="userContainer col-12 col-md-9">
 <?php
-//$_SESSION['userId'] = 442; 
 if (! empty($_SESSION['userId']))
 {
   $userQuery="SELECT * FROM users WHERE userId =?";
@@ -8,7 +7,7 @@ if (! empty($_SESSION['userId']))
   $userResult->execute([$_SESSION['userId']]);
   $user=$userResult->fetch(PDO::FETCH_ASSOC);
 
-       ?>
+?>
         <div class="user-container">
           <div class="name">Name :</div>
           <div class="mail">Email :</div>
@@ -32,17 +31,9 @@ else
 {
   ?>
   <div class="user-container">
-  <div class="name"></div>
-  <div class="mail"></div>
-  <div class="signature"></div>
-  <div class="username"></div>
-  <div class="userEmail">You are not logged in. <a href="register.php">Click here to register</a> or log in on the right side of the page.</div>
-  <div class="signatureTxt"></div>
-  <div class="w-25 picGravatar"><?php include 'include/gravatar.php' ;?></div>
-  <div class="modifName"></div>
-  <div class="modifEmail"></div>
-  <div class="modfiSignature"></div>
-  <div class="ModifGravatar"></div>
+  <div class="name">You are not logged in. <a href="register.php">Click here to register</a> or log in on the right side of the page.</div>
+  <div class="picGravatar"><?php include 'include/gravatar.php' ;?></div>
+
 </div>
 
 <?php
