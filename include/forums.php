@@ -39,7 +39,7 @@
 				$author = $authorResult->fetch(PDO::FETCH_ASSOC);
         ?>
 		<div class="row border-top align-items-center p-1">
-			<a class="col-8 m-0" href="content-post.php?id=<?= $topicRow["topicId"]; ?>"><?= $topicRow["topicTitle"]; ?></a>
+			<a class="col-8 m-0" href="posts.php?id=<?= $topicRow["topicId"]; ?>"><?= $topicRow["topicTitle"]; ?></a>
 			<p class="col-1 m-0 text-center"><?= $totalPosts["total"]; ?></p>
 			<p class="col-1 m-0 text-center">OUI</p>
 			<p class="col-2 m-0 text-center">
