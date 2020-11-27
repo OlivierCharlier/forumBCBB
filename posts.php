@@ -8,10 +8,20 @@
     <!-- HEADER  -->
     <?php include("include/header.php"); ?>
     <!-- START OF PAGE CONTENT  -->
-    
-    <?php include("include/ContentPost.php"); ?>
 
+    <main class="background">
+    <!-- NAV BAR  -->
+ <?php include("include/breadcrumb.php"); ?>
+    <div class="container-fluid row align-items-start">
+   
 
+      <!-- CATEGORIES -->
+      <?php include("include/ContentPost.php"); ?>
+
+      <!-- aside -->
+      <?php include("include/aside.php"); ?>
+    </div>
+</main>
     <!-- END OF PAGE CONTENT -->
 
 
