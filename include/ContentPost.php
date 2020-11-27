@@ -1,9 +1,9 @@
 
- 
-<div class="background">
+<div class="container-fluid col-12 col-md-9">
+
+
 <?php $topicId = $_GET["id"]; ?>
- <!-- NAV BAR  -->
- <?php include("include/breadcrumb.php"); ?>
+
  <?php 
  
 $TopicTitleQuery = "SELECT topicTitle FROM topics WHERE topicId = ?";
@@ -19,7 +19,7 @@ $TopicTitle = $TopicTitleResult->fetch(PDO::FETCH_ASSOC);
 
 <div class="buttons">
 
-    <button type="button" class="btn btn-primary reply"><i class="fas fa-reply"></i> Post Reply </button>
+    <a href="newPost.php?id=<?= $topicId ?>" class="btn btn-primary reply"><i class="fas fa-reply"></i> Post Reply </a>
     <button class="setting"><i class="fas fa-wrench"></i> </button>
     <form>
         <div>
@@ -29,7 +29,9 @@ $TopicTitle = $TopicTitleResult->fetch(PDO::FETCH_ASSOC);
     </form>
     <button class="setting"> <i class="fas fa-search"></i></button>
     <button class="setting"> <i class="fas fa-cog"></i></button>  
-</div>
+</div>  <!--END OF BUTTONS-->
+
+
 
 
 
@@ -45,36 +47,41 @@ $TopicTitle = $TopicTitleResult->fetch(PDO::FETCH_ASSOC);
 				$authorQuery = "SELECT * FROM users WHERE userId = ?";
 				$authorResult = $bdd->prepare($authorQuery);
 				$authorResult->execute(array($postRow["postUserId"]));
-				$author = $authorResult->fetch(PDO::FETCH_ASSOC);
+                $author = $authorResult->fetch(PDO::FETCH_ASSOC);
+                
+
 ?>
 
     <div class="rounded border container comments">
     
 		<div class="row bg-success align-items-center">
-			<p class="col-8 m-0"> <?= $postRow["postDate"]; ?></p>
-         </div> 
+			<p class="col-8 m-0 date"> <?= $postRow["postDate"]; ?></p>
+        </div> <!--END OF GREEN BOX WITH DATE-->
         
-		<div class="row border-top align-items-center p-1">
-        <div class="avatar-border">
+		<div class="row border-top align-items-center p-1 box-comments">
+            <div class="avatar-border">
 
-
-        <?php // include 'include/gravatar.php' ;?>
+                <div class="avatar-profile">
+                <?php include('include/gravatar.php');?>
+                </div>   <!--END OF AVATAR PROFILE-->
         
             <p class="col-2 m-0"> 
-            <a href="profile.php?id=<?= $author["userId"]; ?>"><?= $author["username"]; ?></a></p>
+                <a  class="profile" href="profile.php?id=<?= $author["userId"]; ?>"><?= $author["username"]; ?></a>
+            </p>
 
-        </div> 
+            </div>   <!-- END OF AVATAR BOX -->
+            <div class="content">
             <p class="col-8 m-0" <?= $postRow["postId"]; ?>><?= $postRow["postContent"]; ?></p>
         
-        <div class="signa">	
-            <p class="signature" <?= $author["userSignature"]; ?>> </p>
-        </div>
-        </div>
-		</div> 
+        
+            <p class="signature"><?= $author["userSignature"]; ?> </p>
+            </div> <!-- END OF CONTENT BOX-->
+        </div> <!-- END OF BOX COMMENTS -->
+    </div>   <!--END OF CONTAINER COMMENTS--> 
         <?php        
             }
         ?>
-        </div>
-        </div>
-    </div>
-</div>
+
+    
+
+</div> 
