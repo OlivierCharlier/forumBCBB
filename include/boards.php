@@ -38,19 +38,29 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="mr-2">
-							<p><?= $totalTopic["total"]; ?></p>
-							<p class="text-muted">Topics</p>
-						</div>
-						<div class="mr-2">
-							<!-- TODO -->
-							<p>908</p>
-							<p class="text-muted">Posts</p>
-						</div>
-						<div class="mr-2">
-							<p><?= $lastTopic["topicCreationDate"]; ?></p>
-							<p class="text-muted">Last post</p>
-						</div>
+						<p class="text-muted">
+							<?= $totalTopic["total"]; ?> topics
+							<br>
+							Last topic created  
+							<?php 
+								$currentDate = strtotime(date("Y-m-d H:i:s"));
+								$postDate = strtotime(date($lastTopic['topicCreationDate']));
+								$seconds_ago = ($currentDate - $postDate);
+								if ($seconds_ago >= 31536000) {
+									echo intval($seconds_ago / 31536000) . " year(s) ago";
+								} else if ($seconds_ago >= 2419200) {
+									echo intval($seconds_ago / 2419200) . " month(s) ago";
+								} else if ($seconds_ago >= 86400) {
+									echo intval($seconds_ago / 86400) . " day(s) ago";
+								} else if ($seconds_ago >= 3600) {
+									echo intval($seconds_ago / 3600) . " hour(s) ago";
+								} else if ($seconds_ago >= 60) {
+									echo intval($seconds_ago / 60) . " minute(s) ago";
+								} else {
+									echo "Less than a minute ago";
+								}
+							?>
+						</p>
 					</div>
 				</a>
 			</div>
