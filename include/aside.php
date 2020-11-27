@@ -33,6 +33,7 @@ if (isset($_POST['validateone'])){
     }
 }
 ?>
+
     <aside class="col-md-3 col-12">
                     <!-----------SEARCH-------------->
                 <!-- <form action="" method="POST">
@@ -59,37 +60,49 @@ if (isset($_POST['validateone'])){
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Remember me</label>
                     </div>
-                    <button type="submit" name="validateone" class="btn btn-success">Login</button>
+                    <button type="submit" name="validateone" class="btn btn-success"><strong>Login</strong></button>
                   </div>
                 </form>
                 </br>
             <!-----------NEW MEMBER-------------->
             <h3 class="Become">Become a member</h3>
             <button type="submit" name="becomeaMembre" class="w-100 btn btn-success">
-            <?php echo "<a href='register.php'> Sign up ! </a>" ?>
+            <?php echo "<a href='register.php'> <strong>Sign up</strong> ! </a>" ?>
             </button>
             </br>
             </br>
             <h3 class="Become">My profile</h3>
             <button type="submit" name="myProfil" class="w-100 btn btn-success">
-            <?php echo "<a href='profile.php'> Complete your profile ! </a>" ?>
+            <?php echo "<a href='profile.php'> <strong>Complete your profile !</strong> </a>" ?>
             </button>
 
-                  <!-----------LAST POSTS -------------->
-            <div class="card bg-light mb-3 lastpost">
-                <div class="card-header">Last pots
+      <!-----------LAST POSTS -------------->
+          <h3 class="titlelastPost">Last Post</h3> 
+          <?php
+          $lastPost = $bdd->prepare('SELECT postContent, postTopicId FROM posts ORDER BY postId DESC LIMIT 4');
+          $lastPost->execute();
+
+          while ($post = $lastPost->fetch(PDO::FETCH_ASSOC)){
+            $lastTopic = $bdd->prepare('SELECT topicTitle FROM topics WHERE topicId = ?');
+            $lastTopic->execute([$post['postTopicId']]);
+            $topicTitle=$lastTopic->fetch(PDO::FETCH_ASSOC);
+          ?>
+              <div class="card bg-light mb-3 lastpost">
+                <div class="card-header headergreen">
+                <strong>
+                <?=$topicTitle['topicTitle'];?> 
+                </strong>
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text"></p>
-                  <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text"></p>
-                  <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-texte"></p>
-                  <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text"></p>
+                <p class="card-text">
+                <?= $post['postContent']; ?>
+                <br />
+                </p>
+                </div>
               </div>
-          </div>
+          <?php
+          }
+        ?>
 
                 <!-----------LAST ACTIVE USERS -------------->
                 <section class="card bg-light mb-3">
