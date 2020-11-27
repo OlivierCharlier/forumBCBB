@@ -1,8 +1,6 @@
 <div class="container-fluid col-12 col-md-9 p-5">
 
-	<p>
-		Forum Rules
-	</p>
+<div class="rules"> <p class="Text-Rules">Forum Rules </p></div> 
 
 	<?php 
 		$topicId = $_GET["id"];

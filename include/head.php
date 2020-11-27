@@ -2,12 +2,13 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="sass/style.css">
   <link rel="stylesheet" href="sass/aside.css">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"> 
+
   <title>Badminton Club Bain de Bretagne - BCBB</title>
 
   <?php
