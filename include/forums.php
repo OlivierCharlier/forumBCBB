@@ -41,17 +41,17 @@
 				$authorResult->execute(array($topicRow["topicAuthorId"]));
 				$author = $authorResult->fetch(PDO::FETCH_ASSOC);
 				
-				$lastPostQuery = "SELECT postDate,postUserId FROM posts WHERE postTopicId = ? ORDER BY postId DESC LIMIT 1";
+				$lastPostQuery = "
+					SELECT users.username, users.userId, posts.postDate
+					FROM users
+					LEFT JOIN posts
+					ON posts.postUserId = users.userId
+					WHERE postTopicId = ? 
+					ORDER BY postId DESC 
+					LIMIT 1";
 				$lastPostResult = $bdd->prepare($lastPostQuery);
 				$lastPostResult->execute(array($topicRow["topicId"]));
-				$lastPost = $lastPostResult->fetch(PDO::FETCH_ASSOC);
 
-				$postAuthorQuery = "SELECT username, userId FROM users WHERE userId = ?";
-				$postAuthorResult = $bdd->prepare($postAuthorQuery);
-				$postAuthorResult->execute([$lastPost["postUserId"]]);
-				$postAuthor = $postAuthorResult->fetch(PDO::FETCH_ASSOC);
-
-				$date = new DateTime($lastPost['postDate']);
         ?>
 		<div class="row border-top align-items-center p-1">
 			<div class="col-9 m-0">
@@ -69,11 +69,18 @@
 			<p class="col-1 m-0 text-center"><?= $totalPosts["total"]; ?></p>
 			<!-- <p class="col-1 m-0 text-center">TO DO</p> -->
 			<p class="col-2 m-0 text-center">
-				<a href="profile.php?id=<?= $postAuthor["userId"]; ?>">
-					<?= $postAuthor["username"]; ?>
+				<?php			
+					while($lastPost = $lastPostResult->fetch(PDO::FETCH_ASSOC)){
+						$date = new DateTime($lastPost['postDate']);
+				?>
+				<a href="profile.php?id=<?= $lastPost["userId"]; ?>">
+					<?= $lastPost["username"]; ?>
 				</a>
 				<br>
 				<span class="text-muted smaller"><?= $date->format('j M Y'); ?></span>
+				<?php
+					}
+				?>
 			</p>
 		</div>
         <?php
