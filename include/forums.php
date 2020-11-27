@@ -41,17 +41,40 @@
 				$authorResult = $bdd->prepare($authorQuery);
 				$authorResult->execute(array($topicRow["topicAuthorId"]));
 				$author = $authorResult->fetch(PDO::FETCH_ASSOC);
+				
+				$lastPostQuery = "SELECT postDate,postUserId FROM posts WHERE postTopicId = ? ORDER BY postId DESC LIMIT 1";
+				$lastPostResult = $bdd->prepare($lastPostQuery);
+				$lastPostResult->execute(array($topicRow["topicId"]));
+				$lastPost = $lastPostResult->fetch(PDO::FETCH_ASSOC);
+
+				$postAuthorQuery = "SELECT username, userId FROM users WHERE userId = ?";
+				$postAuthorResult = $bdd->prepare($postAuthorQuery);
+				$postAuthorResult->execute([$lastPost["postUserId"]]);
+				$postAuthor = $postAuthorResult->fetch(PDO::FETCH_ASSOC);
+
+				$date = new DateTime($lastPost['postDate']);
         ?>
 		<div class="row border-top align-items-center p-1">
-			<a class="col-8 m-0" href="posts.php?id=<?= $topicRow["topicId"]; ?>"><?= $topicRow["topicTitle"]; ?></a>
-			<p class="col-1 m-0 text-center"><?= $totalPosts["total"]; ?></p>
-			<p class="col-1 m-0 text-center">TO DO</p>
-			<p class="col-2 m-0 text-center">
-				By <a href="profile.php?id=<?= $author["userId"]; ?>">
-					<?= $author["username"]; ?>
+			<div class="col-9 m-0">
+				<a href="posts.php?id=<?= $topicRow["topicId"]; ?>">
+					<?= $topicRow["topicTitle"]; ?>
 				</a>
 				<br>
-				<span class="text-muted"><?= $topicRow["topicCreationDate"]; ?></span>
+				<span class="smaller">
+					<span class="text-muted">By</span>
+					<a href="profile.php?id=<?= $author["userId"]; ?>">
+						<?= $author["username"]; ?>
+					</a>
+				</span>
+			</div>
+			<p class="col-1 m-0 text-center"><?= $totalPosts["total"]; ?></p>
+			<!-- <p class="col-1 m-0 text-center">TO DO</p> -->
+			<p class="col-2 m-0 text-center">
+				<a href="profile.php?id=<?= $postAuthor["userId"]; ?>">
+					<?= $postAuthor["username"]; ?>
+				</a>
+				<br>
+				<span class="text-muted smaller"><?= $date->format('j M Y'); ?></span>
 			</p>
 		</div>
         <?php
