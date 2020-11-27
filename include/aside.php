@@ -32,7 +32,7 @@ if (isset($_POST['validateone'])){
         $errorMessageaside ="Please complete all fields";
     }
 }
-?> 
+?>
     <aside class="col-md-3 col-12">
                     <!-----------SEARCH-------------->
                 <!-- <form action="" method="POST">
@@ -43,9 +43,9 @@ if (isset($_POST['validateone'])){
                 <?php if (isset($errorMessageaside)) { ?> <p style="color: red;"><?= $errorMessageaside ?></p> <?php } ?>
                 <?php if (isset($succesMessageaside)) { ?> <p style="color: green;"><?= $succesMessageaside ?></p> <?php } ?>
                     <!-----------USERNAME-------------->
+                    <h3 class="titlelogin">Login</h3>
                 <form action="register.php" method="POST" name="aside">
                   </br>
-                  <p> Login - Register</p>
                   <div class="w-100 col-auto">
                     <label class="sr-only" for="inlineFormInputGroup">Username</label>
                     <div class="input-group mb-2">
@@ -66,13 +66,13 @@ if (isset($_POST['validateone'])){
             <!-----------NEW MEMBER-------------->
             <h3 class="Become">Become a member</h3>
             <button type="submit" name="becomeaMembre" class="w-100 btn btn-success">
-            <?php echo "<a href='register.php' target='_blank'> Sign up ! </a>" ?>
+            <?php echo "<a href='register.php'> Sign up ! </a>" ?>
             </button>
             </br>
             </br>
             <h3 class="Become">My profile</h3>
             <button type="submit" name="myProfil" class="w-100 btn btn-success">
-            <?php echo "<a href='profile.php' target='_blank'> Complete your profile ! </a>" ?>
+            <?php echo "<a href='profile.php'> Complete your profile ! </a>" ?>
             </button>
 
                   <!-----------LAST POSTS -------------->
@@ -81,13 +81,13 @@ if (isset($_POST['validateone'])){
                 </div>
                 <div class="card-body">
                   <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"></p>
                   <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"></p>
                   <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-texte"></p>
                   <h5 class="card-title">Post-catogry3</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text"></p>
               </div>
           </div>
 
