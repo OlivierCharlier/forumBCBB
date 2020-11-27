@@ -12,7 +12,7 @@ $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-b
 $size = 120; //img size
 //creat the URL of the img from Gravatar linked with the email address
 $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
-}
+
 ?>
 <!-- img with the URL created -->
 <img class="avatar" src="<?php echo $grav_url; ?>" alt="picture" />
