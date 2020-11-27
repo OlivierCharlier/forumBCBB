@@ -1,7 +1,6 @@
 <?php
 //if a session exist, take the user information from the database.
- if (! empty($_SESSION['userId'])) 
- {
+if (! empty($_SESSION['userId']))  {
   $userQuery="SELECT * FROM users WHERE userId =?";
   $userResult=$bdd->prepare($userQuery);
   $userResult->execute([$_SESSION['userId']]);
@@ -14,8 +13,18 @@ $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-b
 $size = 120; //img size
 //creat the URL of the img from Gravatar linked with the email address
 $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
- }
- else{
+}elseif(! empty($_GET['id'])){
+      $userId = $_GET["id"];
+      $userQuery="SELECT * FROM users WHERE userId =?";
+      $userResult=$bdd->prepare($userQuery);
+      $userResult->execute([$_GET['id']]);
+      $user=$userResult->fetch(PDO::FETCH_ASSOC);
+      
+      $email = $user['userEmail']; // a non-existent address to have the default avatar
+      $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
+      $size = 120;
+      $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+}else{
 
     $email = "mail@mail.mail"; // a non-existent address to have the default avatar
     $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
