@@ -63,7 +63,16 @@ $TopicTitle = $TopicTitleResult->fetch(PDO::FETCH_ASSOC);
 
                 <div class="avatar-profile">
                     <div class="avatar">
-                        <?php include('include/gravatar.php');?>
+                        <?php 
+                        //call gravatar with the email from the poster-user
+                        $email = $author["userEmail"]; 
+                        $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
+                        $size = 120;
+                        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                        ?>
+                        <!-- img with the URL created -->
+                        <img class="avatar" src="<?php echo $grav_url; ?>" alt="picture" />
+                       
                     </div>
                 </div>   <!--END OF AVATAR PROFILE-->
         

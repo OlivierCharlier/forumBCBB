@@ -12,7 +12,7 @@
           <div class="username"><?= $user['username'] ?></div>
           <div class="userEmail"><?= $user['userEmail'] ?></div>
           <div class="signatureTxt"><?= $user['userSignature'] ?></div>
-          <div class="w-25 picGravatar"><?php include 'include/gravatar.php' ;?></div>
+          <div class="w-25 picGravatar"><?php include 'include/user_gravatar.php' ;?></div>
           <div class="modifName"><a href="#">Modify your username</a></div>
           <div class="modifEmail"><a href="#">Modify your password</a></div>
           <div class="modfiSignature"><a href="#">Modify your signature</a></div>

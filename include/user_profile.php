@@ -14,7 +14,7 @@
           <div class="username"><?php if($user){echo $user["username"];} ?></div>
           <div class="userEmail"><?php if($user){echo $user['userEmail'];}?></div>
           <div class="signatureTxt"><?php if($user){echo $user['userSignature'];}?></div>
-          <div class="w-25 picGravatar"><?php include 'include/gravatar.php' ;?></div>
+          <div class="w-25 picGravatar"><?php include 'include/profile_gravatar.php' ;?></div>
           <div class="modifName"></div>
           <div class="modifEmail"></div>
           <div class="modfiSignature"></div>          
