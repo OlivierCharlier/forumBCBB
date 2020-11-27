@@ -48,12 +48,12 @@ if (isset($_POST['validateone'])){
                 <form action="register.php" method="POST" name="aside">
                   </br>
                   <div class="w-100 col-auto">
-                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                    <label>Username</label>
                     <div class="input-group mb-2">
                       <input type="text" name="userName" class="form-control" id="inlineFormInputGroup" placeholder="Username" maxlength="16">
                     </div>
                     <!-----------PASSWORD-------------->
-                    <label for="exampleInputPassword1">Password</label>
+                    <label>Password</label>
                     <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
               
                     <div class="form-group form-check">
