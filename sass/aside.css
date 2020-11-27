@@ -1,3 +1,5 @@
+/*---------- LINK ------------*/
+
 aside a{
   color:white;
   text-decoration: none;
@@ -8,17 +10,31 @@ aside a:hover{
   text-decoration: none;
   }
 
+  /*---------- TITLE ------------*/
+
   aside h3{
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
   }
 
-  aside .lastpost{
-    margin-top: 40px;
+  aside h4{
+    text-align: center;
+    color:#02933d;
+  }
+    /*----- Margin for a title Last Post ----*/
+  aside .titlelastPost{
+    margin-top: 60px;
   }
 
+   /*---------- CARD------------*/
+
   aside .headergreen{
-    background-color:#22993f;
+    background-color:white;
+    color: #02933d;
+  }
+
+  aside .headergreentwo{
+    background-color: #f9c7c7;
     color: white;
   }

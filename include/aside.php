@@ -90,6 +90,7 @@ if (isset($_POST['validateone'])){
               <div class="card bg-light mb-3 lastpost">
                 <div class="card-header headergreen">
                 <strong>
+                  <a>
                 <?=$topicTitle['topicTitle'];?> 
                 </strong>
                 </div>
@@ -104,42 +105,29 @@ if (isset($_POST['validateone'])){
           }
         ?>
 
-                <!-----------LAST ACTIVE USERS -------------->
-                <section class="card bg-light mb-3">
-                  <div class="card-header">Last Active Users
-                  </div>
-                  <div class="card-body">
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object dp img-circle" src="https://www.flaticon.com/svg/static/icons/svg/2317/2317933.svg" style="width: 50px;height:50px;">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading">Truc muche 
-                                </br>
-                                <small> I love badminiton</small></h5>
-                            </div>    
-                     </div>
-
-                      <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="https://www.flaticon.com/svg/static/icons/svg/2761/2761758.svg" style="width: 50px;height:50px;">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Pelotte Lamie
-                            </br>
-                            <small>Help</small></h5>
-                        </div>  
-                      </div>
-
-                      <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object dp img-circle" src="https://www.flaticon.com/svg/static/icons/svg/731/731870.svg" style="width: 50px;height:50x;">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Raquette Man
-                            </br>
-                            <small>New</small></h5>
-                        </div>  
-                      </div>
-                </section>
-    </aside>
+        <!-----------LAST ACTIVE USERS -------------->
+<h3 class="newmember">New member</h3> 
+          <?php
+          $userId = $bdd->prepare('SELECT * FROM users ORDER BY userId DESC LIMIT 3');
+          $userId->execute();
+          while ($userpost = $userId->fetch(PDO::FETCH_ASSOC)){
+          ?>
+              <div class="card bg-light mb-3 lastpost">
+                <div class="card-body">
+                <p class="card-text gravatarimg">
+                <h4><?= $userpost['username']; ?></h4>
+                <br />
+                <?php
+                        $email = $userpost["userEmail"]; 
+                        $default = "https://cdn1.iconfinder.com/data/icons/sport-avatar-7/64/05-sports-badminton-sport-avatar-player-512.png";
+                        $size = 120;
+                        $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+                ?>
+                        <!-- img with the URL created -->
+                        <img class="avatar" src="<?php echo $grav_url; ?>" alt="picture" />
+                </p>
+                </div>
+              </div>
+          <?php
+          }
+        ?>
