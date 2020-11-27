@@ -48,7 +48,6 @@ if(isset($_POST['validatetwo'])){
             $check_session->execute(array($username, $userEmail, $pwd));
             $info_user = $check_session->fetch();
             /*Va permettre à l'utilisateur de rester connécté et de récupérer ses infos*/
-            session_start();
             $_SESSION['pwd'] = $info_user['pwd'];
             $_SESSION['userId'] = $info_user['userId'];
             $_SESSION['userEmail'] = $info_user['userEmail'];
