@@ -54,7 +54,7 @@ if (isset($_POST['validateone'])){
                     </div>
                     <!-----------PASSWORD-------------->
                     <label>Password</label>
-                    <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
+                    <input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
               
                     <div class="form-group form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
