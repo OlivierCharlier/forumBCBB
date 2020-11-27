@@ -62,7 +62,9 @@ $TopicTitle = $TopicTitleResult->fetch(PDO::FETCH_ASSOC);
             <div class="avatar-border">
 
                 <div class="avatar-profile">
-                <?php include('include/gravatar.php');?>
+                    <div class="avatar">
+                        <?php include('include/gravatar.php');?>
+                    </div>
                 </div>   <!--END OF AVATAR PROFILE-->
         
             <p class="col-2 m-0"> 

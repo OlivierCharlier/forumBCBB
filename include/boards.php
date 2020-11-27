@@ -27,10 +27,10 @@
 		?>
 		<section class="col-12 col-md-4" style="max-width: 540px;">
 			<div class="card mb-3">
-				<a href="forum.php?id=<?= $forumRow["forumId"]; ?>" class="card-body">
+				<a href="forum.php?id=<?= $forumRow["forumId"]; ?>" class="card-body profile">
 					<div class="row no-gutters">
 						<div class="col-3">
-							<img src="pictures/<?= $forumRow["forumPicSrc"]; ?>" class="card-img" alt="...">
+							<img src="pictures/logo.png<?= $forumRow["forumPicSrc"]; ?>" class="card-img" alt="...">
 						</div>
 						<div class="col-9">
 							<h5 class="card-title"><?= $forumRow["forumName"]; ?></h5>

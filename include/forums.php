@@ -1,19 +1,23 @@
 <div class="forums container-fluid col-12 col-md-9 p-5">
 	<?php $forumId = $_GET["id"]; ?>
 
-	<p>
-		Forum Rules
-	</p>
+	<div class="rules"> <p class="Text-Rules">Forum Rules </p></div> 
+	<div class="buttons">
 	<div class ="row p-2">
-		<a href="newTopic.php?id=<?= $forumId; ?>" class="btn-success rounded-pill p-2 m-2">
+		<a href="newTopic.php?id=<?= $forumId; ?>" class="btn-success rounded-pill p-2 m-2 reply">
 			New topic
 		</a>
-		<button class="m-2">Tri</button>
-		<form class="row ml-3">
-			<input>
-			<button>Loupe</button>
-		</form>
-		<button class="ml-5">Engrenage</button>
+		<button class="setting"><i class="fas fa-wrench"></i> </button>
+    <form>
+        <div>
+            
+            <input type="text" id="search" name="search" value="Search this topic ..." class="search">
+        </div>
+    </form>
+    <button class="setting"> <i class="fas fa-search"></i></button>
+    <button class="setting"> <i class="fas fa-cog"></i></button>  
+</div>  <!--END OF BUTTONS-->
+
 	</div>
 	<div class="rounded border container">
 		<div class="forums__header row bg-success align-items-center">
@@ -56,10 +60,10 @@
 
 	</div>
 	<div class ="row p-2">
-		<a href="newTopic.php?id=<?= $forumId; ?>" class="btn-success rounded-pill p-2 m-2">
+		<a href="newTopic.php?id=<?= $forumId; ?>" class="btn-success rounded-pill p-2 m-2 reply">
 			New topic
 		</a>
-		<button class="m-2">Tri</button>
+		<button class="m-2 setting">Tri</button>
 	</div>
 
 </div>
