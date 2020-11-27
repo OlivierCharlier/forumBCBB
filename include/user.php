@@ -1,4 +1,3 @@
-<div class="userContainer col-12 col-md-9">
 <?php
   $userQuery="SELECT * FROM users WHERE userId =?";
   $userResult=$bdd->prepare($userQuery);
@@ -21,4 +20,3 @@
             <p><a href="destroy_session.php">Log out</a></p>
           </div>
         </div>
-</div>
