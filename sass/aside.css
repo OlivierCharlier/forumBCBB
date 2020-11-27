@@ -1,6 +1,12 @@
-aside a{
-  color:white;
-  }
+  aside a{
+    color:white;
+    text-decoration: none;
+    }
+
+  aside a:hover{
+    color:white;
+    text-decoration: none;
+    }
 
   aside .Become{
     margin-top: 20px;
